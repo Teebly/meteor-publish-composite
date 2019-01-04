@@ -1,7 +1,7 @@
 Package.describe({
     name: 'teebly:publish-composite',
     summary: 'Publish a set of related documents from multiple collections with a reactive join',
-    version: '1.7.0',
+    version: '1.7.1',
     git: 'https://github.com/englue/meteor-publish-composite.git',
 });
 
