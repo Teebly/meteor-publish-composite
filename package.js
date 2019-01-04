@@ -1,5 +1,5 @@
 Package.describe({
-    name: 'reywood:publish-composite',
+    name: 'teebly:publish-composite',
     summary: 'Publish a set of related documents from multiple collections with a reactive join',
     version: '1.7.0',
     git: 'https://github.com/englue/meteor-publish-composite.git',
@@ -42,6 +42,7 @@ Package.onTest((api) => {
         'mongo',
         'underscore',
     ], 'server');
+    api.use(["diff-sequence", "ejson"], "server");
 
     api.addFiles('tests/common.js', ['client', 'server']);
     api.addFiles('tests/client.js', 'client');

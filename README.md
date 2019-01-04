@@ -1,5 +1,28 @@
-meteor-publish-composite
+teebly-publish-composite
 ========================
+
+A modified publish-composite
+
+teebly-publish-composite
+========================
+
+This is a lightly modified version of publish-composite, combining parts of 2 PRs that are 
+outstanding as of Jan 2019:
+
+- https://github.com/englue/meteor-publish-composite/pull/43/files : the concept of a projection 
+function, that's applied to a document before it's published to the client, while still passing the
+document unmodified to any child publications.
+
+That PR gets rid of `cursor.observeChanges` and instead uses `cursor.observe`. The benefit is we have
+the entire document available when a change happens, which makes it possible to re-compute any derived 
+fields. In order to avoid re-publishing the entire document to the client each time a single field
+changes, we copy-pasta the part of Minimongo that's used for diffing objects. Most of this is now
+included in meteor core, so we don't have to copy much.  
+
+The updated package is published on Atmosphere.
+
+-----------
+Original README below
 
 `publishComposite(...)` provides a flexible way to publish a set of related documents from various collections using a reactive join. This makes it easy to publish a whole tree of documents at once. The published collections are reactive and will update when additions/changes/deletions are made.
 
